@@ -29,22 +29,29 @@ body
     align-items: center;
   }
 
-  .td_title_the_best_film 
-  {
+.td_title_the_best_film 
+{
     width: 40%;
     text-align: center;
     font-size: xx-large;
-  }
+}
 
-  .td_picture_the_best_film {
+.td_picture_the_best_film {
     width: 60%;
     height: 100%;
     text-align: center;
     font-size: xx-large;
-  }
+}
 
-  .picture_the_best_film 
-  {
+.picture_the_best_film 
+{
     height: 268px;
-  }
+}
+  
+#top_rated_films 
+{
+    font-size: xx-large;
+    text-align: center;
+    padding: 50px;
+}
   

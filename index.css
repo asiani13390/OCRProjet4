@@ -16,7 +16,8 @@ body
     width: 80%;
 }
 
-.box_the_best_film {
+.box_the_best_film 
+{
     background-color: #62757f;
     color: white;
     margin: auto;
@@ -26,5 +27,24 @@ body
     border: solid 6px black;
     display: flex;
     align-items: center;
+  }
+
+  .td_title_the_best_film 
+  {
+    width: 40%;
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  .td_picture_the_best_film {
+    width: 60%;
+    height: 100%;
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  .picture_the_best_film 
+  {
+    height: 268px;
   }
   

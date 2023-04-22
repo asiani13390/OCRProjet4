@@ -55,7 +55,7 @@ body
     padding: 50px;
 }
 
-#carrousel
+.carrousel
 {
     position: relative;
     margin: auto;
@@ -116,3 +116,11 @@ body
     opacity: 1;
     cursor: pointer;
 }
+
+.category
+{
+  font-size: xx-large;
+  text-align: center;
+  padding: 50px;
+}
+

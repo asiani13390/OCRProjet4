@@ -1,0 +1,18 @@
+body
+{
+    background-color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif; 
+}
+  
+.banner
+{
+    background-color: #62757f;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    color: white;
+    padding: 50px;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+}
+  

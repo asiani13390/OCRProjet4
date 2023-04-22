@@ -1,7 +1,22 @@
 function initialize()
 {
+    // Position index for each carousel
+    position_index_for_carousel = [0,0,0,0];
+
+    // Quantity of photos to add in each container
+    number_of_photos_by_container = [7,7,7,7]
+
+    // Width of each photo
+    photo_width = 182;
+
     // Fill the best film
-    fill_the_best_film();
+    fill_the_best_film(); 
+
+    // Add photos to containers
+    Container_id = 0;
+    Url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score";
+    addPhotosToContainer(Container_id, Url);
+
 }
 
 
@@ -30,4 +45,40 @@ const get_articles = async (url) => {
         } catch(error) {
             return error;
         }
+}
+
+
+async function addPhotosToContainer(container_id, url)
+{
+    current_page = 0;
+    maximum_element_for_the_container = number_of_photos_by_container[container_id];
+
+    let container = document.getElementById("container" + container_id);
+    
+    number_of_photos_by_container[container_id] = 0;
+
+    while (number_of_photos_by_container[container_id] < maximum_element_for_the_container)
+    {
+        current_page +=1;
+        url_api = url +"&page=" + current_page;
+
+        let data_from_api =  await get_articles(url_api);
+        
+        i=0;
+        
+        while (i < data_from_api.results.length && number_of_photos_by_container[container_id] < maximum_element_for_the_container)
+        {
+            let image = document.createElement("img");
+            image.onerror=function() { image.src = "indisponible.jpg"; }
+            image.src = data_from_api.results[i]["image_url"];
+            image.setAttribute("id","photo"); 
+            image.setAttribute("title", data_from_api.results[i]["title"]); 
+            image.setAttribute("onclick", "open_modal(" + data_from_api.results[i]["id"] + ")");
+
+            container.appendChild(image);
+            
+            i+=1;
+            number_of_photos_by_container[container_id] +=1;   
+        }   
+    }
 }

@@ -82,3 +82,35 @@ async function addPhotosToContainer(container_id, url)
         }   
     }
 }
+
+function right_shift(container_id)
+{
+    position = position_index_for_carousel[container_id];
+
+    if (Math.abs(position) < number_of_photos_by_container[container_id]-1)
+    {
+        position--;
+    }
+
+    container = document.getElementById("container"+container_id);
+
+    container.style.transform="translate(" + photo_width*position + "px)";
+
+    position_index_for_carousel[container_id] = position;
+}
+
+function left_shift(container_id)
+{
+    position = position_index_for_carousel[container_id];
+
+    if (position < 0 )
+    {
+        position++;
+    }
+
+    container = document.getElementById("container" + container_id);    
+
+    container.style.transform="translate(" + photo_width*position + "px)";
+
+    position_index_for_carousel[container_id] = position;
+}

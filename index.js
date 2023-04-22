@@ -17,6 +17,13 @@ function initialize()
     Url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score";
     addPhotosToContainer(Container_id, Url);
 
+    Container_id = 1;
+    Category= "Action";
+    Url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre="+Category;
+    document.getElementById("category1").textContent = Category;
+    addPhotosToContainer(Container_id, Url);
+
+
 }
 
 

@@ -54,4 +54,65 @@ body
     text-align: center;
     padding: 50px;
 }
+
+#carrousel
+{
+    position: relative;
+    margin: auto;
+    background-color: black;
+    width: 728px;
+    height: 268px;
+    border: solid 6px #CCCCCC;
+    overflow: hidden;
+}
+
+#container0 {
+    display: flex;
+    position: relative;
+    margin: auto;
+    border: solid 0px #BBBB;
+    width: 728px; 
+    height: 268px;
+    transition: all 0.2s ease;
+  }
   
+.box-arrow
+{
+    width: 20px;
+}
+
+.arrow__btn
+{
+    position: absolute;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 6em;
+}
+  
+.left-arrow
+{
+    top:70px;
+    bottom:0;
+    left:0;
+    opacity: 0.5;
+}
+
+.right-arrow
+{
+    top:70px;
+    bottom:0;
+    right:0;
+    opacity: 0.5;
+}
+
+.left-arrow:hover
+{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.right-arrow:hover
+{
+    opacity: 1;
+    cursor: pointer;
+}

@@ -15,4 +15,16 @@ body
     margin: auto;
     width: 80%;
 }
+
+.box_the_best_film {
+    background-color: #62757f;
+    color: white;
+    margin: auto;
+    margin-top: 50px;
+    height: 268px;
+    width: 80%;
+    border: solid 6px black;
+    display: flex;
+    align-items: center;
+  }
   

@@ -133,3 +133,9 @@ body
     translate: 0px;
     opacity: 0.8;
 }
+
+.photos:hover
+{
+    opacity: 1;
+    transition: all 0.4s ease;
+}

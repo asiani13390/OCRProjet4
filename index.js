@@ -9,6 +9,9 @@ function initialize()
     // Width of each photo
     photo_width = 182;
 
+    // Categories to display
+    categories = ["Action","Drama","Adventure"]
+
     // Fill the best film
     fill_the_best_film(); 
 
@@ -18,12 +21,20 @@ function initialize()
     addPhotosToContainer(Container_id, Url);
 
     Container_id = 1;
-    Category= "Action";
-    Url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre="+Category;
-    document.getElementById("category1").textContent = Category;
+    Url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre=" + categories[0];
+    document.getElementById("category1").textContent = categories[0];
     addPhotosToContainer(Container_id, Url);
 
+    Container_id = 2;
+    Url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre=" + categories[1];
+    document.getElementById("category2").textContent = categories[1];
+    addPhotosToContainer(Container_id, Url);
 
+    Container_id = 3;
+    Url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre=" + categories[2];
+    document.getElementById("category3").textContent = categories[2];
+    addPhotosToContainer(Container_id, Url);
+    
 }
 
 
@@ -78,7 +89,7 @@ async function addPhotosToContainer(container_id, url)
             let image = document.createElement("img");
             image.onerror=function() { image.src = "indisponible.jpg"; }
             image.src = data_from_api.results[i]["image_url"];
-            image.setAttribute("id","photo"); 
+            image.setAttribute("class","photos"); 
             image.setAttribute("title", data_from_api.results[i]["title"]); 
             image.setAttribute("onclick", "open_modal(" + data_from_api.results[i]["id"] + ")");
 

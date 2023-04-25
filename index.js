@@ -1,5 +1,15 @@
 function initialize()
 {
+    // =================================================
+    // initialize()
+    //
+    // This function is called when the body is loaded
+    // Variable are initialized
+    // Functions are launched to fill the html document
+    // IN : Nothing
+    // OUT : Nothing
+    // =================================================
+
     // Position index for each carousel
     position_index_for_carousel = [0,0,0,0];
 
@@ -36,7 +46,6 @@ function initialize()
     addPhotosToContainer(Container_id, Url);
 
     // Manage modal window
-
     let modal = document.getElementById("myModal");
     let span = document.getElementsByClassName("close")[0];
 
@@ -50,6 +59,16 @@ function initialize()
 
 async function fill_the_best_film()
 {
+    // =================================================
+    // fill_the_best_film()
+    //
+    // This is asynchronous function 
+    // It query the API OCMovies to get the best film
+    // Best film frame is completed
+    // IN : Nothing
+    // OUT : Nothing
+    // =================================================
+
     let films =  await get_articles("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score");
 
     let title_the_best_film = document.getElementById("title_the_best_film");
@@ -58,26 +77,50 @@ async function fill_the_best_film()
     let picture_best_film = document.getElementById("picture_best_film");
     picture_best_film.onerror = function() { picture_best_film.src = "indisponible.jpg"; }
     picture_best_film.setAttribute("src", films.results[0]["image_url"]);
+    picture_best_film.setAttribute("title", films.results[0]["title"]); 
     picture_best_film.setAttribute("onclick", "open_modal(" + films.results[0]["id"] + ")");
 }
 
 
-const get_articles = async (url) => {
-        try {
-            // Calls the API url, parses to JSON, returns
-            let callJson = await fetch(url);
-            let loadJson = await callJson.json();   
-            return loadJson;
+async function get_articles(url)
+{
+    // =================================================
+    // get_articles(url)
+    //
+    // This is asynchronous function 
+    // It query the API OCMovies with url
+    // IN : Url
+    // OUT : Json data or error
+    // =================================================
+
+    try {
+        // Calls the API url, parses to JSON, returns
+        let callJson = await fetch(url);
+        let loadJson = await callJson.json();   
+        return loadJson;
         
-        // Error
-        } catch(error) {
-            return error;
-        }
+    } 
+    catch(error)
+    {
+         return error;
+    }
 }
 
 
 async function addPhotosToContainer(container_id, url)
 {
+    // =================================================
+    // addPhotosToContainer(container_id, url)
+    //
+    // This is asynchronous function 
+    // The function manage API pagination (5 elements is returned only by API request)
+    // It query the API OCMovies
+    // It create new image element
+    // Image element are added to HTML container
+    // IN : Container_id and Url
+    // OUT : Nothing
+    // =================================================
+
     current_page = 0;
     maximum_element_for_the_container = number_of_photos_by_container[container_id];
 
@@ -113,6 +156,14 @@ async function addPhotosToContainer(container_id, url)
 
 function right_shift(container_id)
 {
+    // =================================================
+    // right_shift(container_id)
+    //
+    // Move the carousel selected to the right
+    // IN : Container_id
+    // OUT : Nothing
+    // =================================================
+
     position = position_index_for_carousel[container_id];
 
     if (Math.abs(position) < number_of_photos_by_container[container_id]-1)
@@ -129,6 +180,14 @@ function right_shift(container_id)
 
 function left_shift(container_id)
 {
+    // =================================================
+    // left_shift(container_id)
+    //
+    // Move the carousel selected to the left
+    // IN : Container_id
+    // OUT : Nothing
+    // =================================================
+
     position = position_index_for_carousel[container_id];
 
     if (position < 0 )
@@ -143,7 +202,17 @@ function left_shift(container_id)
     position_index_for_carousel[container_id] = position;
 }
 
-function open_modal(article_id) {
+function open_modal(article_id)
+{
+    // =================================================
+    // open_modal(article_id)  
+    //
+    // Launch get data for the article_id
+    // Display the modal window
+    // IN : article_id
+    // OUT : Nothing
+    // =================================================
+
     get_data_of_modal(article_id);
     let modal = document.getElementsByClassName("modal")[0];
     modal.style.display = "block";
@@ -151,6 +220,16 @@ function open_modal(article_id) {
 
 async function get_data_of_modal(article_id)
 {
+  // =================================================
+  // get_data_of_modal(article_id)
+  //
+  // This is asynchronous function
+  // Get data from the API
+  // Fill the modal window with data
+  // IN : article_id
+  // OUT : Nothing
+  // =================================================
+    
   url_api = "http://localhost:8000/api/v1/titles/" + article_id;
   let data_from_api =  await get_articles(url_api);
 
